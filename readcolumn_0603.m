@@ -13,7 +13,7 @@ ave_rou=245.1
 for i=1:192
     for j=1:192
         pixel(i,j) = X(i,j,1);
-        rou(i,j)=double((1e-3))*(double(FUC)*(double(255)*double(pixel(i,j))-double(INTERCEPT)))/double(SLOP);%g/cm3
+        %rou(i,j)=double((1e-3))*(double(FUC)*(double(255)*double(pixel(i,j))-double(INTERCEPT)))/double(SLOP);%g/cm3
         E(i,j)=double(10.5)*double(rou(i,j))^2.57;
         if(pixel(i,j)>0)
             pix_num=pix_num+1;
