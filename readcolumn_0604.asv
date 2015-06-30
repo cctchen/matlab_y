@@ -1,0 +1,34 @@
+pix_num=0;
+pix_val=0;
+for i=1:192
+    for j=1:192
+        y(i,j) = X(i,j,1);
+        if(y(i,j)>0)
+            pix_num=pix_num+1;
+             temp=y(i,j);
+            pix_val=double(pix_val)+double(temp);
+        end
+    end
+end
+pix_num
+pix_val
+
+%variable difination
+a=6.0847;
+b=-3.4422;
+CSA=19.586; %cm2;
+Hscale=sqrt(CSA/pix_num)
+format long
+%Read pixel value,calculate rou & E matrix
+rou_sum=0;
+for i=1:192
+    for j=1:192
+        pixel(i,j) = X(i,j,1);
+        rou(i,j)=double((1e-3))*(double(FUC)*(double(255)*double(pixel(i,j))-double(INTERCEPT)))/double(SLOP);%g/cm3
+        E(i,j)=double(10.5)*double(rou(i,j))^2.57;
+        if(pixel(i,j)>0)
+            pix_num=pix_num+1;
+            rou_sum=double(rou_sum)+double(rou(i,j));
+        end
+    end
+end
